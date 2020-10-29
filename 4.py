@@ -12,7 +12,7 @@ elif list[1] == "*":
     print(result)
 elif list[1] == "/":
     if c == 0:
-        print("На ноль дылити неможна")
+        print("На ноль ділити неможна")
     else:
         result = a / c
         print(result)
