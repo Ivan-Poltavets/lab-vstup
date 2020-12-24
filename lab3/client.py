@@ -14,12 +14,13 @@ def read_sok():
 
 
 
-server = 'localhost', 9090
+server = '192.168.0.109', 9090
 alias = input("NAME : ")
 encrypt = input('Decrypt message:')
 sor = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sor.bind(('', 0))
 potok = threading.Thread(target=read_sok)
+potok.daemon = True
 potok.start()
 while 1:
     message = cesar.func(input(),1)
