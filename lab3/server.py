@@ -1,6 +1,6 @@
 import socket
 sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-sock.bind(('localhost',9090))
+sock.bind(('',9090))
 client = []
 print ('Start Server')
 while 1:
