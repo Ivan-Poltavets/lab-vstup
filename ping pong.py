@@ -21,17 +21,6 @@ PLAYER_2_SCORE = 0
 
 right_line_distance = WIDTH - PAD_W
 
-
-def update_score(player):
-    global PLAYER_1_SCORE, PLAYER_2_SCORE
-    if player == "right":
-        PLAYER_1_SCORE += 1
-        w2.itemconfig(p_1_text, text=PLAYER_1_SCORE)
-    else:
-        PLAYER_2_SCORE += 1
-        c.itemconfig(p_2_text, text=PLAYER_2_SCORE)
-
-
 def spawn_ball():
     global BALL_X_SPEED
     c.coords(BALL, WIDTH / 2 - BALL_RADIUS / 2,
@@ -82,14 +71,6 @@ BALL = c.create_oval(WIDTH / 2 - BALL_RADIUS / 2,
 LEFT_PAD = c.create_line(PAD_W / 2, 0, PAD_W / 2, PAD_H, width=10, fill="yellow")
 RIGHT_PAD = c.create_line(WIDTH - PAD_W / 2, 0, WIDTH - PAD_W / 2,
                           PAD_H, width=PAD_W, fill="yellow")
-p_1_text = w2.create_text(300 - 300 / 6, PAD_H / 4,
-                         text=PLAYER_1_SCORE,
-                         font="Arial 20",
-                         fill="white")
-p_2_text = c.create_text(WIDTH / 6, PAD_H / 4,
-                         text=PLAYER_2_SCORE,
-                         font="Arial 20",
-                         fill="white")
 
 BALL_X_CHANGE = 20
 BALL_Y_CHANGE = 0
@@ -109,13 +90,11 @@ def move_ball():
             if c.coords(RIGHT_PAD)[1] < ball_center < c.coords(RIGHT_PAD)[3]:
                 bounce("strike")
             else:
-                update_score("left")
                 spawn_ball()
         else:
             if c.coords(LEFT_PAD)[1] < ball_center < c.coords(LEFT_PAD)[3]:
                 bounce("strike")
             else:
-                update_score("right")
                 spawn_ball()
     else:
         if ball_right > WIDTH / 2:
